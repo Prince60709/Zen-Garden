@@ -1584,6 +1584,9 @@ footer .zen-accessibility::before {
 footer .zen-validate-html::before {
     /* Begins the rule that targets elements with the .zen-validate-html class for the generated content before the selected element. */
 
+    width: 80%;
+    /* Sets the element width, using 80%. */
+
     background: url("image 1.png") center calc(50% + 4px) / 150% auto no-repeat;
     /* Sets the background color, gradient, or image; scales the HTML shield to match the CSS shield. */
 
@@ -1595,6 +1598,15 @@ footer .zen-validate-html::before {
 
 footer .zen-validate-css::before {
     /* Begins the rule that targets elements with the .zen-validate-css class for the generated content before the selected element. */
+
+    position: absolute;
+    /* Controls how the element is positioned in the layout; positions the element relative to its nearest positioned ancestor. */
+
+    width: 105%;
+    /* Sets the element width, using 105%. */
+
+    left: -1%;
+    /* Sets the distance from the containing block’s left edge, using -1%. */
 
     background: url("image 2.png") center calc(50% + 4px) / 150% auto no-repeat;
     /* Sets the background color, gradient, or image; scales the CSS shield to match the HTML shield visually. */
