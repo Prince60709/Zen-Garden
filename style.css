@@ -1,100 +1,3381 @@
-/* Empty file for template. Remember to edit only this file and not the HTML file */
-/* Imports font */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+/* Loads the Montserrat font family in the requested weights from Google Fonts. */
 
-/* Changes the background color */
+
+
+html:root {
+    /* Begins the rule that targets the root HTML element, where the page-wide theme settings are defined. */
+
+    color-scheme: dark;
+    /* Tells the browser that this page is designed for a dark color scheme; signals that native browser controls should use dark-mode styling. */
+
+    --garden-night: #4b3e60;
+    /* Defines the reusable custom property --garden-night as #4b3e60, for later var() references. */
+
+    --glass: #7c7191;
+    /* Defines the reusable custom property --glass as #7c7191, for later var() references. */
+
+    --glass-edge: rgba(255, 255, 255, 0.2);
+    /* Defines the reusable custom property --glass-edge as rgba(255, 255, 255, 0.2), for later var() references. */
+
+    --ink: #fbf9ff;
+    /* Defines the reusable custom property --ink as #fbf9ff, for later var() references. */
+
+    --muted-ink: rgba(255, 255, 255, 0.82);
+    /* Defines the reusable custom property --muted-ink as rgba(255, 255, 255, 0.82), for later var() references. */
+
+    --card-shadow: 0 8px 20px rgba(19, 12, 38, 0.24);
+    /* Defines the reusable custom property --card-shadow as 0 8px 20px rgba(19, 12, 38, 0.24), for later var() references. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
 * {
+    /* Begins the rule that targets every element, applying a consistent box-sizing model throughout the page. */
+
     box-sizing: border-box;
-    /* margin: 0; */
-    /* padding: 0; */
+    /* Makes declared widths and heights include padding and borders; includes border and padding within the declared width and height. */
+
 }
 
-/* Changes the font of the document */
-body {
-    font-family: "Montserrat", sans-serif;
-    background-color: #382752;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    color: #FFFFFF;
-    position: relative;
-    padding-bottom: 2rem;
+/* Closes the current CSS rule or @media block. */
+
+
+
+html[lang|="en"] {
+    /* Begins the rule that targets an HTML element whose language is English or begins with the language code en-. */
+
+    min-width: 320px;
+    /* Sets the smallest permitted width, using 320px. */
+
+    overflow-x: clip;
+    /* Controls content that extends beyond the left or right edge; clips horizontal overflow at the edge. */
+
+    background: var(--garden-night);
+    /* Sets the background color, gradient, or image; uses the shared --garden-night setting. */
+
 }
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+body#css-zen-garden {
+    /* Begins the rule that targets the page body used by CSS Zen Garden. */
+
+    position: relative;
+    /* Controls how the element is positioned in the layout; keeps the element in normal flow while allowing offset positioning and establishing a positioning reference. */
+
+    isolation: isolate;
+    /* Creates a separate stacking context for layered elements, using isolate. */
+
+    min-height: 100vh;
+    /* Sets the smallest permitted height, using 100vh. */
+
+    margin: 0;
+    /* Sets the outside spacing around the element; removes the corresponding default spacing. */
+
+    padding: 12px 0;
+    /* Sets the inside spacing between the content and its border, using 12px 0. */
+
+    overflow-x: hidden;
+    /* Controls content that extends beyond the left or right edge; clips horizontal overflow without showing a scrollbar. */
+
+    background: var(--garden-night);
+    /* Sets the background color, gradient, or image; uses the shared --garden-night setting. */
+
+    color: var(--ink);
+    /* Sets the foreground text or icon color; uses the shared --ink setting. */
+
+    font-family: "Montserrat", "Segoe UI", sans-serif;
+    /* Chooses the typeface, followed by fallback fonts, using "Montserrat", "Segoe UI", sans-serif. */
+
+    font-size: 10px;
+    /* Sets the text size; sets the font size to 10px. */
+
+    font-weight: 500;
+    /* Sets how thick or bold the text appears; sets the font weight to 500. */
+
+    line-height: 1.3;
+    /* Sets the vertical spacing between lines of text, using 1.3. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
 
 .page-wrapper {
-    width: 80%;
-    max-width: 1280px;
+    /* Begins the rule that targets the main wrapper that constrains and arranges the page content. */
+
+    --card-gap: 10px;
+    /* Defines the reusable custom property --card-gap as 10px, for later var() references. */
+
+    position: relative;
+    /* Controls how the element is positioned in the layout; keeps the element in normal flow while allowing offset positioning and establishing a positioning reference. */
+
+    z-index: 1;
+    /* Sets the stacking order relative to overlapping elements, using 1. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    flex-direction: column;
+    /* Sets the direction in which flex items are arranged; stacks flex items vertically. */
+
+    container-type: inline-size;
+    /* Makes the element a query container so its size can drive responsive rules; enables container queries based on this element’s inline width. */
+
+    gap: var(--card-gap);
+    /* Sets the spacing between rows and/or columns in the layout; uses the shared --card-gap setting. */
+
+    width: calc(100% - 60px);
+    /* Sets the element width; calculates the value with calc(100% - 60px) so the layout adapts to available space. */
+
+    max-width: 780px;
+    /* Caps the element width so it does not grow beyond this limit, using 780px. */
+
     margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 40px;
+    /* Sets the outside spacing around the element, using 0 auto. */
+
 }
 
-.main.supporting {
+/* Closes the current CSS rule or @media block. */
+
+
+
+div.intro {
+    /* Begins the rule that targets the introductory div and arranges its contents in a column. */
+
     display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 30px 0;
-}
-.sidebar .wrapper {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 30px 0;
+    /* Sets the direction in which flex items are arranged; stacks flex items vertically. */
+
 }
 
-/* Centers selected text */
-h1,
-h2,
-h3 {
-    text-align: center;
-}
+/* Closes the current CSS rule or @media block. */
 
-[role="contentinfo"] {
-    text-align: center;
-}
 
-.summary {
-    text-align: center;
-}
 
-/* Glass-morphism cards */
-.intro,
+.intro>header,
+/* Includes the header that is a direct child of the introduction section in this shared selector group. */
+
+.intro>header+.summary,
+/* Includes the summary immediately following the intro header in this shared selector group. */
+
 #zen-preamble,
+/* Includes the introductory preamble section by its ID in this shared selector group. */
+
 .explanation,
-[title="Cascading Style Sheets"],
+/* Includes the explanation content panel in this shared selector group. */
+
 .participation,
+/* Includes the participation content panel in this shared selector group. */
+
 .benefits,
+/* Includes the benefits content panel in this shared selector group. */
+
 .requirements,
+/* Includes the requirements content panel in this shared selector group. */
+
+.requirements>p[role="contentinfo"],
+/* Includes paragraphs marked with role="contentinfo" in this shared selector group. */
+
 .design-selection,
+/* Includes the design-selection navigation panel in this shared selector group. */
+
 .design-archives,
+/* Includes the design-archives navigation panel in this shared selector group. */
+
 .zen-resources {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(16px) saturate(180%);
-    /* -webkit-backdrop-filter: blur(16px) saturate(180%); */
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    padding: 24px;
-    color: #ffffff;
+    /* Begins the rule that targets the Zen resources navigation panel. */
+
+    border: 1px solid var(--glass-edge);
+    /* Sets the border’s thickness, style, and color, using 1px solid var(--glass-edge). */
+
+    background: var(--glass);
+    /* Sets the background color, gradient, or image; uses the shared --glass setting. */
+
+    box-shadow: var(--card-shadow);
+    /* Adds a shadow around the element; uses the shared --card-shadow setting. */
+
+    backdrop-filter: blur(16px) saturate(150%);
+    /* Applies blur and/or color effects to content behind the element, using blur(16px) saturate(150%). */
+
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    /* Provides the same backdrop effect for browsers using the WebKit-prefixed property, using blur(16px) saturate(150%). */
+
 }
 
-footer {
-    /* display: flex; */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+/* Closes the current CSS rule or @media block. */
+
+
+
+.intro>header {
+    /* Begins the rule that targets the header that is a direct child of the introduction section. */
+
+    padding: 11px 14px 6px;
+    /* Sets the inside spacing between the content and its border, using 11px 14px 6px. */
+
+    border-bottom: 0;
+    /* Sets the bottom border; removes this border edge. */
+
+    border-radius: 13px 13px 0 0;
+    /* Rounds the element’s corners, using 13px 13px 0 0. */
+
+    box-shadow: none;
+    /* Adds a shadow around the element; removes the box shadow. */
+
+    backdrop-filter: none;
+    /* Applies blur and/or color effects to content behind the element; turns this effect off. */
+
+    -webkit-backdrop-filter: none;
+    /* Provides the same backdrop effect for browsers using the WebKit-prefixed property; turns this effect off. */
+
     text-align: center;
-    padding: 2rem;
+    /* Aligns text horizontally within its container, using center. */
+
 }
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.intro>header+.summary {
+    /* Begins the rule that targets the summary immediately following the intro header. */
+
+    padding: 0 14px 13px;
+    /* Sets the inside spacing between the content and its border, using 0 14px 13px. */
+
+    border-top: 0;
+    /* Sets the top border; removes this border edge. */
+
+    border-radius: 0 0 13px 13px;
+    /* Rounds the element’s corners, using 0 0 13px 13px. */
+
+    box-shadow: none;
+    /* Adds a shadow around the element; removes the box shadow. */
+
+    backdrop-filter: none;
+    /* Applies blur and/or color effects to content behind the element; turns this effect off. */
+
+    -webkit-backdrop-filter: none;
+    /* Provides the same backdrop effect for browsers using the WebKit-prefixed property; turns this effect off. */
+
+    text-align: center;
+    /* Aligns text horizontally within its container, using center. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+h1,
+/* Includes level-one headings in this shared selector group. */
+
+h2,
+/* Includes level-two headings in this shared selector group. */
+
+h3,
+/* Includes level-three headings in this shared selector group. */
+
+p,
+/* Includes paragraph elements in this shared selector group. */
+
+p:first-child,
+/* Includes paragraphs and the first child in this shared selector group. */
+
+p:nth-child(2),
+/* Includes paragraphs and the child in position 2 in this shared selector group. */
+
+div p,
+/* Includes paragraphs in this shared selector group. */
+
+div>p {
+    /* Begins the rule that targets paragraphs. */
+
+    margin-top: 0;
+    /* Sets the space above the element, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.intro h1 {
+    /* Begins the rule that targets level-one headings. */
+
+    position: relative;
+    /* Controls how the element is positioned in the layout; keeps the element in normal flow while allowing offset positioning and establishing a positioning reference. */
+
+    margin-bottom: 5px;
+    /* Sets the space below the element, using 5px. */
+
+    font-size: clamp(21px, 6.9vw, 26px);
+    /* Sets the text size; uses clamp(21px, 6.9vw, 26px) to keep the value responsive within a minimum and maximum. */
+
+    font-weight: 800;
+    /* Sets how thick or bold the text appears; sets the font weight to 800. */
+
+    line-height: 1.2;
+    /* Sets the vertical spacing between lines of text, using 1.2. */
+
+    letter-spacing: 0.01em;
+    /* Sets the spacing between characters, using 0.01em. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.intro h2 {
+    /* Begins the rule that targets level-two headings. */
+
+    margin-bottom: 0;
+    /* Sets the space below the element, using 0. */
+
+    font-size: 15px;
+    /* Sets the text size; sets the font size to 15px. */
+
+    font-weight: 700;
+    /* Sets how thick or bold the text appears; sets the font weight to 700. */
+
+    line-height: 1.25;
+    /* Sets the vertical spacing between lines of text, using 1.25. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.summary p {
+    /* Begins the rule that targets paragraphs inside the summary area. */
+
+    margin-bottom: 3px;
+    /* Sets the space below the element, using 3px. */
+
+    color: var(--muted-ink);
+    /* Sets the foreground text or icon color; uses the shared --muted-ink setting. */
+
+    font-size: 10px;
+    /* Sets the text size; sets the font size to 10px. */
+
+    line-height: 1.25;
+    /* Sets the vertical spacing between lines of text, using 1.25. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.summary p:last-child,
+/* Includes paragraphs and the last child in this shared selector group. */
+
+.summary p:last-of-type {
+    /* Begins the rule that targets paragraphs and the last element of its type. */
+
+    margin-bottom: 0;
+    /* Sets the space below the element, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+abbr[title] {
+    /* Begins the rule that targets <abbr> elements. */
+
+    text-decoration: none;
+    /* Sets the line decoration applied to text; removes default text decoration. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+#zen-preamble {
+    /* Begins the rule that targets the introductory preamble section by its ID. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    flex-wrap: wrap;
+    /* Allows flex items to move onto another row when needed; allows items to continue onto new lines when needed. */
+
+    --preamble-column-gap: 9px;
+    /* Defines the reusable custom property --preamble-column-gap as 9px, for later var() references. */
+
+    --preamble-first: 1;
+    /* Defines the reusable custom property --preamble-first as 1, for later var() references. */
+
+    --preamble-second: 1;
+    /* Defines the reusable custom property --preamble-second as 1, for later var() references. */
+
+    --preamble-third: 1;
+    /* Defines the reusable custom property --preamble-third as 1, for later var() references. */
+
+    column-gap: var(--preamble-column-gap);
+    /* Sets the spacing between columns; uses the shared --preamble-column-gap setting. */
+
+    margin-top: var(--card-gap);
+    /* Sets the space above the element; uses the shared --card-gap setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+#zen-preamble h3 {
+    /* Begins the rule that targets level-three headings. */
+
+    flex: 0 0 100%;
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 100%. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+#zen-preamble>p:nth-of-type(1) {
+    /* Begins the rule that targets paragraphs and the 1st element of its type. */
+
+    flex: var(--preamble-first) 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space; uses the shared --preamble-first setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+#zen-preamble>p:nth-of-type(2) {
+    /* Begins the rule that targets paragraphs and the 2nd element of its type. */
+
+    flex: var(--preamble-second) 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space; uses the shared --preamble-second setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+#zen-preamble>p:nth-of-type(3) {
+    /* Begins the rule that targets paragraphs and the 3rd element of its type. */
+
+    flex: var(--preamble-third) 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space; uses the shared --preamble-third setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+#zen-preamble p {
+    /* Begins the rule that targets paragraphs. */
+
+    min-width: 0;
+    /* Sets the smallest permitted width, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.main.supporting,
+/* Includes the main content element that has the supporting class in this shared selector group. */
+
+.intro~.main {
+    /* Begins the rule that targets main elements that appear later as siblings of the intro section. */
+
+    display: contents;
+    /* Chooses the element’s layout behavior; lets this element’s children participate directly in the parent layout. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.sidebar {
+    /* Begins the rule that targets the sidebar containing navigation and resource links. */
+
+    order: 1;
+    /* Changes the visual order of a flex item, using 1. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+#zen-preamble,
+/* Includes the introductory preamble section by its ID in this shared selector group. */
+
+.explanation,
+/* Includes the explanation content panel in this shared selector group. */
+
+.participation,
+/* Includes the participation content panel in this shared selector group. */
+
+.benefits,
+/* Includes the benefits content panel in this shared selector group. */
+
+.requirements,
+/* Includes the requirements content panel in this shared selector group. */
+
+.design-selection,
+/* Includes the design-selection navigation panel in this shared selector group. */
+
+.design-archives,
+/* Includes the design-archives navigation panel in this shared selector group. */
+
+.zen-resources {
+    /* Begins the rule that targets the Zen resources navigation panel. */
+
+    padding: 10px 13px;
+    /* Sets the inside spacing between the content and its border, using 10px 13px. */
+
+    border-radius: 13px;
+    /* Rounds the element’s corners, using 13px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.explanation,
+/* Includes the explanation content panel in this shared selector group. */
+
+.participation,
+/* Includes the participation content panel in this shared selector group. */
+
+.benefits,
+/* Includes the benefits content panel in this shared selector group. */
+
+.requirements {
+    /* Begins the rule that targets the requirements content panel. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    flex-wrap: wrap;
+    /* Allows flex items to move onto another row when needed; allows items to continue onto new lines when needed. */
+
+    column-gap: 14px;
+    /* Sets the spacing between columns, using 14px. */
+
+    align-items: start;
+    /* Aligns items across the flex container’s cross axis, using start. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.explanation>p {
+    /* Begins the rule that targets paragraphs. */
+
+    font-size: 6.2px;
+    /* Sets the text size; sets the font size to 6.2px. */
+
+    line-height: 1.22;
+    /* Sets the vertical spacing between lines of text, using 1.22. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.participation>p,
+/* Includes paragraphs in this shared selector group. */
+
+.benefits>p {
+    /* Begins the rule that targets paragraphs. */
+
+    font-size: 5.7px;
+    /* Sets the text size; sets the font size to 5.7px. */
+
+    line-height: 1.22;
+    /* Sets the vertical spacing between lines of text, using 1.22. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.requirements {
+    /* Begins the rule that targets the requirements content panel. */
+
+    position: relative;
+    /* Controls how the element is positioned in the layout; keeps the element in normal flow while allowing offset positioning and establishing a positioning reference. */
+
+    --requirements-first-column: 50%;
+    /* Defines the reusable custom property --requirements-first-column as 50%, for later var() references. */
+
+    --requirements-second-column: 50%;
+    /* Defines the reusable custom property --requirements-second-column as 50%, for later var() references. */
+
+    --requirements-first-gap: 7px;
+    /* Defines the reusable custom property --requirements-first-gap as 7px, for later var() references. */
+
+    --requirements-second-gap: 7px;
+    /* Defines the reusable custom property --requirements-second-gap as 7px, for later var() references. */
+
+    --requirements-rounding-adjustment: 0px;
+    /* Defines the reusable custom property --requirements-rounding-adjustment as 0px, for later var() references. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.requirements>p:not([role="contentinfo"]) {
+    /* Begins the rule that targets paragraphs marked with role="contentinfo". */
+
+    min-width: 0;
+    /* Sets the smallest permitted width, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.requirements>p:nth-of-type(1) {
+    /* Begins the rule that targets paragraphs and the 1st element of its type. */
+
+    flex: 0 0 calc(var(--requirements-first-column) - var(--requirements-first-gap));
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 calc(var(--requirements-first-column) - var(--requirements-first-gap)). */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.requirements>p:nth-of-type(2) {
+    /* Begins the rule that targets paragraphs and the 2nd element of its type. */
+
+    flex: 0 0 calc(var(--requirements-second-column) - var(--requirements-second-gap));
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 calc(var(--requirements-second-column) - var(--requirements-second-gap)). */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.requirements>p:nth-of-type(3) {
+    /* Begins the rule that targets paragraphs and the 3rd element of its type. */
+
+    flex: 0 0 calc(var(--requirements-first-column) + var(--requirements-bottom-adjustment, 0px) - var(--requirements-first-gap) - var(--requirements-rounding-adjustment));
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 calc(var(--requirements-first-column) + var(--requirements-bottom-adjustment, 0px) - var(--requirements-first-gap) - var(--requirements-rounding-adjustment)). */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.requirements>p:nth-of-type(4) {
+    /* Begins the rule that targets paragraphs and the 4th element of its type. */
+
+    flex: 0 0 calc(var(--requirements-second-column) - var(--requirements-bottom-adjustment, 0px) - var(--requirements-second-gap) + var(--requirements-rounding-adjustment));
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 calc(var(--requirements-second-column) - var(--requirements-bottom-adjustment, 0px) - var(--requirements-second-gap) + var(--requirements-rounding-adjustment)). */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.explanation>p,
+/* Includes paragraphs in this shared selector group. */
+
+.participation>p {
+    /* Begins the rule that targets paragraphs. */
+
+    min-width: 0;
+    /* Sets the smallest permitted width, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.participation {
+    /* Begins the rule that targets the participation content panel. */
+
+    --participation-first: 1;
+    /* Defines the reusable custom property --participation-first as 1, for later var() references. */
+
+    --participation-second: 1;
+    /* Defines the reusable custom property --participation-second as 1, for later var() references. */
+
+    --participation-third: 1;
+    /* Defines the reusable custom property --participation-third as 1, for later var() references. */
+
+    column-gap: 11px;
+    /* Sets the spacing between columns, using 11px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.explanation>p:nth-of-type(1) {
+    /* Begins the rule that targets paragraphs and the 1st element of its type. */
+
+    flex: var(--explanation-first, 1) 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space; uses the shared --explanation-first setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.explanation>p:nth-of-type(2) {
+    /* Begins the rule that targets paragraphs and the 2nd element of its type. */
+
+    flex: var(--explanation-second, 1) 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space; uses the shared --explanation-second setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.participation>p:nth-of-type(1) {
+    /* Begins the rule that targets paragraphs and the 1st element of its type. */
+
+    flex: var(--participation-first) 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space; uses the shared --participation-first setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.participation>p:nth-of-type(2) {
+    /* Begins the rule that targets paragraphs and the 2nd element of its type. */
+
+    flex: var(--participation-second) 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space; uses the shared --participation-second setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.participation>p:nth-of-type(3) {
+    /* Begins the rule that targets paragraphs and the 3rd element of its type. */
+
+    flex: var(--participation-third) 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space; uses the shared --participation-third setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.benefits>p {
+    /* Begins the rule that targets paragraphs. */
+
+    flex: 0 0 100%;
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 100%. */
+
+    min-width: 0;
+    /* Sets the smallest permitted width, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+h3 {
+    /* Begins the rule that targets level-three headings. */
+
+    flex: 0 0 100%;
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 100%. */
+
+    margin-bottom: 6px;
+    /* Sets the space below the element, using 6px. */
+
+    text-align: center;
+    /* Aligns text horizontally within its container, using center. */
+
+    font-size: 13px;
+    /* Sets the text size; sets the font size to 13px. */
+
+    font-weight: 700;
+    /* Sets how thick or bold the text appears; sets the font weight to 700. */
+
+    line-height: 1.25;
+    /* Sets the vertical spacing between lines of text, using 1.25. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+p {
+    /* Begins the rule that targets paragraph elements. */
+
+    margin-bottom: 5px;
+    /* Sets the space below the element, using 5px. */
+
+    color: var(--muted-ink);
+    /* Sets the foreground text or icon color; uses the shared --muted-ink setting. */
+
+    font-size: 5.5px;
+    /* Sets the text size; sets the font size to 5.5px. */
+
+    line-height: 1.2;
+    /* Sets the vertical spacing between lines of text, using 1.2. */
+
+    overflow-wrap: break-word;
+    /* Allows long words or strings to wrap instead of overflowing, using break-word. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.explanation>p,
+/* Includes paragraphs in this shared selector group. */
+
+.requirements>p,
+/* Includes paragraphs in this shared selector group. */
+
+.participation>p {
+    /* Begins the rule that targets paragraphs. */
+
+    margin-bottom: 0;
+    /* Sets the space below the element, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.requirements>p[role="contentinfo"] {
+    /* Begins the rule that targets paragraphs marked with role="contentinfo". */
+
+    position: absolute;
+    /* Controls how the element is positioned in the layout; positions the element relative to its nearest positioned ancestor. */
+
+    text-align: center;
+    /* Aligns text horizontally within its container, using center. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+p:first-of-type::first-letter {
+    /* Begins the rule that targets paragraphs for the first letter of the selected text block and the first element of its type. */
+
+    color: #fff;
+    /* Sets the foreground text or icon color, using #fff. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+p::first-line {
+    /* Begins the rule that targets paragraphs for the first rendered line of text. */
+
+    color: rgba(255, 255, 255, 0.9);
+    /* Sets the foreground text or icon color, using rgba(255, 255, 255, 0.9). */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+p:only-of-type {
+    /* Begins the rule that targets paragraphs and the only element of its type among siblings. */
+
+    margin-bottom: 0;
+    /* Sets the space below the element, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.benefits p:only-of-type {
+    /* Begins the rule that targets paragraphs and the only element of its type among siblings. */
+
+    padding: 0 5px;
+    /* Sets the inside spacing between the content and its border, using 0 5px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-selection {
+    /* Begins the rule that targets the design-selection navigation panel. */
+
+    flex: 0 0 100%;
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 100%. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.sidebar .wrapper {
+    /* Begins the rule that targets the wrapper inside the sidebar. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    flex-wrap: wrap;
+    /* Allows flex items to move onto another row when needed; allows items to continue onto new lines when needed. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives,
+/* Includes the design-archives navigation panel in this shared selector group. */
+
+.zen-resources {
+    /* Begins the rule that targets the Zen resources navigation panel. */
+
+    flex: 1 1 0;
+    /* Sets how a flex item grows, shrinks, and takes up space, using 1 1 0. */
+
+    min-width: 0;
+    /* Sets the smallest permitted width, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-selection h3,
+/* Includes level-three headings in this shared selector group. */
+
+.design-archives h3,
+/* Includes level-three headings in this shared selector group. */
+
+.zen-resources h3 {
+    /* Begins the rule that targets level-three headings. */
+
+    margin-bottom: 6px;
+    /* Sets the space below the element, using 6px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+ul,
+/* Includes unordered lists in this shared selector group. */
+
+.design-selection nav>ul:only-child,
+/* Includes unordered lists and an element that is its parent’s only child in this shared selector group. */
+
+.design-archives nav>ul:only-child {
+    /* Begins the rule that targets unordered lists and an element that is its parent’s only child. */
+
+    margin: 0;
+    /* Sets the outside spacing around the element; removes the corresponding default spacing. */
+
+    padding: 0;
+    /* Sets the inside spacing between the content and its border; removes the corresponding default spacing. */
+
+    list-style: none;
+    /* Sets the marker style used for list items; removes list markers. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-selection ul {
+    /* Begins the rule that targets unordered lists. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    flex-wrap: wrap;
+    /* Allows flex items to move onto another row when needed; allows items to continue onto new lines when needed. */
+
+    text-align: center;
+    /* Aligns text horizontally within its container, using center. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-selection li {
+    /* Begins the rule that targets list items. */
+
+    flex: 0 0 50%;
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 50%. */
+
+    min-width: 0;
+    /* Sets the smallest permitted width, using 0. */
+
+    padding: 1px 2px;
+    /* Sets the inside spacing between the content and its border, using 1px 2px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-selection li:nth-child(even) {
+    /* Begins the rule that targets list items and the child in position even. */
+
+    border-left: 1px solid rgba(255, 255, 255, 0.09);
+    /* Sets the left border, using 1px solid rgba(255, 255, 255, 0.09). */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-selection li:nth-last-child(2),
+/* Includes list items and the child in position 2 counting from the end in this shared selector group. */
+
+.design-selection li:nth-last-of-type(2) {
+    /* Begins the rule that targets list items and the 2nd element of its type counting from the end. */
+
+    padding-bottom: 2px;
+    /* Sets the inside spacing below the content, using 2px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-name {
+    /* Begins the rule that targets elements with the .design-name class. */
+
+    display: block;
+    /* Chooses the element’s layout behavior; makes the element a block-level box. */
+
+    width: fit-content;
+    /* Sets the element width, using fit-content. */
+
+    max-width: 100%;
+    /* Caps the element width so it does not grow beyond this limit, using 100%. */
+
+    margin-inline: auto;
+    /* Sets the outside spacing on both inline sides, usually left and right; lets the browser calculate the value automatically. */
+
+    font-size: 10px;
+    /* Sets the text size; sets the font size to 10px. */
+
+    font-weight: 600;
+    /* Sets how thick or bold the text appears; sets the font weight to 600. */
+
+    line-height: 1.2;
+    /* Sets the vertical spacing between lines of text, using 1.2. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.designer-name {
+    /* Begins the rule that targets elements with the .designer-name class. */
+
+    font-size: 8px;
+    /* Sets the text size; sets the font size to 8px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives ul,
+/* Includes unordered lists in this shared selector group. */
+
+.zen-resources ul {
+    /* Begins the rule that targets unordered lists. */
+
+    padding-left: 11px;
+    /* Sets the inside spacing to the left of the content, using 11px. */
+
+    list-style: disc;
+    /* Sets the marker style used for list items; uses round bullet markers. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives li,
+/* Includes list items in this shared selector group. */
+
+.zen-resources li {
+    /* Begins the rule that targets list items. */
+
+    color: var(--muted-ink);
+    /* Sets the foreground text or icon color; uses the shared --muted-ink setting. */
+
+    font-size: 6.5px;
+    /* Sets the text size; sets the font size to 6.5px. */
+
+    line-height: 1.35;
+    /* Sets the vertical spacing between lines of text, using 1.35. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.zen-resources li:first-child {
+    /* Begins the rule that targets list items and the first child. */
+
+    margin-top: 1px;
+    /* Sets the space above the element, using 1px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.zen-resources ul {
+    /* Begins the rule that targets unordered lists. */
+
+    width: fit-content;
+    /* Sets the element width, using fit-content. */
+
+    max-width: 100%;
+    /* Caps the element width so it does not grow beyond this limit, using 100%. */
+
+    margin-inline: auto;
+    /* Sets the outside spacing on both inline sides, usually left and right; lets the browser calculate the value automatically. */
+
+    text-align: left;
+    /* Aligns text horizontally within its container, using left. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.zen-resources li:last-child,
+/* Includes list items and the last child in this shared selector group. */
+
+.design-archives li:last-child {
+    /* Begins the rule that targets list items and the last child. */
+
+    margin-bottom: 0;
+    /* Sets the space below the element, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
 
 a {
-    color: #ffffff;
+    /* Begins the rule that targets all links. */
+
+    color: var(--ink);
+    /* Sets the foreground text or icon color; uses the shared --ink setting. */
+
+    text-decoration-line: underline;
+    /* Chooses the type of text decoration, such as an underline; adds an underline. */
+
+    text-decoration-style: solid;
+    /* Chooses the style of the text decoration line, using solid. */
+
+    text-decoration-color: rgba(255, 255, 255, 0.58);
+    /* Sets the color of the text decoration line, using rgba(255, 255, 255, 0.58). */
+
+    text-underline-offset: 2px;
+    /* Sets the distance between text and its underline, using 2px. */
+
+    transition: color 160ms ease, text-decoration-color 160ms ease, transform 160ms ease;
+    /* Animates changes to the listed properties over the specified duration, using color 160ms ease, text-decoration-color 160ms ease, transform 160ms ease. */
+
 }
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+a:link {
+    /* Begins the rule that targets links and a link that has not been visited. */
+
+    color: var(--ink);
+    /* Sets the foreground text or icon color; uses the shared --ink setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+a:visited {
+    /* Begins the rule that targets links and a link the browser marks as visited. */
+
+    color: #e7dcff;
+    /* Sets the foreground text or icon color, using #e7dcff. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+a:hover {
+    /* Begins the rule that targets links and an element while the pointer is over it. */
+
+    color: #28a8ff;
+    /* Sets the foreground text or icon color, using #28a8ff. */
+
+    text-decoration-color: currentColor;
+    /* Sets the color of the text decoration line, using currentColor. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+a:active {
+    /* Begins the rule that targets links and a link while it is being activated. */
+
+    color: #ffc6ed;
+    /* Sets the foreground text or icon color, using #ffc6ed. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+a:focus {
+    /* Begins the rule that targets links and an element while it has keyboard or input focus. */
+
+    border-radius: 2px;
+    /* Rounds the element’s corners, using 2px. */
+
+    outline: 2px solid #9affec;
+    /* Sets it to 2px solid #9affec. */
+
+    outline-offset: 3px;
+    /* Sets it to 3px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+a:not([href^="https"]) {
+    /* Begins the rule that targets links whose href begins with https. */
+
+    text-decoration-thickness: 1px;
+    /* Sets the thickness of the text decoration line, using 1px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+a[href^="https"] {
+    /* Begins the rule that targets links whose href begins with https. */
+
+    text-decoration-color: rgba(171, 255, 238, 0.72);
+    /* Sets the color of the text decoration line, using rgba(171, 255, 238, 0.72). */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+a[title~="source"],
+/* Includes links whose title contains source as a separate word in this shared selector group. */
+
+a[href$=".pdf"],
+/* Includes links whose href ends in .pdf in this shared selector group. */
+
+a[href*="amazon.com"] {
+    /* Begins the rule that targets links whose href contains amazon.com. */
+
+    text-decoration-style: solid;
+    /* Chooses the style of the text decoration line, using solid. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+[role] {
+    /* Begins the rule that targets every element that has a role attribute. */
+
+    scroll-margin-top: 1rem;
+    /* Sets it to 1rem. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+[role="contentinfo"] a {
+    /* Begins the rule that targets links marked with role="contentinfo". */
+
+    white-space: nowrap;
+    /* Controls how spaces and line breaks are handled; prevents the text from wrapping onto a second line. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer {
+    /* Begins the rule that targets the page footer. */
+
+    --footer-gap: clamp(8px, 1.5vw, 18px);
+    /* Defines the reusable custom property --footer-gap as clamp(8px, 1.5vw, 18px), for later var() references. */
+
+    order: 2;
+    /* Changes the visual order of a flex item, using 2. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    justify-content: center;
+    /* Distributes items along the main axis of the layout, using center. */
+
+    gap: var(--footer-gap);
+    /* Sets the spacing between rows and/or columns in the layout; uses the shared --footer-gap setting. */
+
+    margin-top: calc(var(--footer-gap) - var(--card-gap));
+    /* Sets the space above the element; calculates the value with calc(var(--footer-gap) - var(--card-gap)) so the layout adapts to available space. */
+
+    padding-top: 0;
+    /* Sets the inside spacing above the content, using 0. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer a {
+    /* Begins the rule that targets links. */
+
+    position: relative;
+    /* Controls how the element is positioned in the layout; keeps the element in normal flow while allowing offset positioning and establishing a positioning reference. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    align-items: center;
+    /* Aligns items across the flex container’s cross axis, using center. */
+
+    justify-content: center;
+    /* Distributes items along the main axis of the layout, using center. */
+
+    width: min(126px, calc((100% - 4 * var(--footer-gap)) / 5));
+    /* Sets the element width; calculates the value with min(126px, calc((100% - 4 * var(--footer-gap)) / 5)) so the layout adapts to available space. */
+
+    aspect-ratio: 1;
+    /* Sets the preferred width-to-height ratio; keeps the element at the ratio 1. */
+
+    flex: 0 1 min(126px, calc((100% - 4 * var(--footer-gap)) / 5));
+    /* Sets how a flex item grows, shrinks, and takes up space, using 0 1 min(126px, calc((100% - 4 * var(--footer-gap)) / 5)). */
+
+    border: 1px solid var(--glass-edge);
+    /* Sets the border’s thickness, style, and color, using 1px solid var(--glass-edge). */
+
+    border-radius: 50%;
+    /* Rounds the element’s corners, using 50%. */
+
+    background: var(--glass);
+    /* Sets the background color, gradient, or image; uses the shared --glass setting. */
+
+    box-shadow: var(--card-shadow);
+    /* Adds a shadow around the element; uses the shared --card-shadow setting. */
+
+    backdrop-filter: blur(16px) saturate(150%);
+    /* Applies blur and/or color effects to content behind the element, using blur(16px) saturate(150%). */
+
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    /* Provides the same backdrop effect for browsers using the WebKit-prefixed property, using blur(16px) saturate(150%). */
+
+    color: var(--ink);
+    /* Sets the foreground text or icon color; uses the shared --ink setting. */
+
+    font-size: 0;
+    /* Sets the text size, using 0. */
+
+    text-decoration: none;
+    /* Sets the line decoration applied to text; removes default text decoration. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer a::before {
+    /* Begins the rule that targets links for the generated content before the selected element. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    align-items: center;
+    /* Aligns items across the flex container’s cross axis, using center. */
+
+    justify-content: center;
+    /* Distributes items along the main axis of the layout, using center. */
+
+    width: 56%;
+    /* Sets the element width, using 56%. */
+
+    height: 64%;
+    /* Sets the element height, using 64%. */
+
+    color: white;
+    /* Sets the foreground text or icon color, using white. */
+
+    font-family: "Segoe UI", sans-serif;
+    /* Chooses the typeface, followed by fallback fonts, using "Segoe UI", sans-serif. */
+
+    font-size: clamp(20px, 4vw, 48px);
+    /* Sets the text size; uses clamp(20px, 4vw, 48px) to keep the value responsive within a minimum and maximum. */
+
+    font-weight: 800;
+    /* Sets how thick or bold the text appears; sets the font weight to 800. */
+
+    line-height: 1;
+    /* Sets the vertical spacing between lines of text, using 1. */
+
+    content: "";
+    /* Sets the generated content displayed by a pseudo-element; creates an empty pseudo-element that can be styled as decoration. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer a::after {
+    /* Begins the rule that targets links for the generated content after the selected element. */
+
+    position: absolute;
+    /* Controls how the element is positioned in the layout; positions the element relative to its nearest positioned ancestor. */
+
+    inset: 0;
+    /* Sets the offsets from all four edges of a positioned element, using 0. */
+
+    border-radius: inherit;
+    /* Rounds the element’s corners, using inherit. */
+
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), transparent 55%);
+    /* Sets the background color, gradient, or image; adds a subtle diagonal highlight gradient over the background. */
+
+    content: "";
+    /* Sets the generated content displayed by a pseudo-element; creates an empty pseudo-element that can be styled as decoration. */
+
+    pointer-events: none;
+    /* Controls whether the element can receive pointer interactions; makes this decorative layer ignore pointer input. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer .zen-validate-html::before,
+/* Includes elements with the .zen-validate-html class for the generated content before the selected element in this shared selector group. */
+
+footer .zen-validate-css::before,
+/* Includes elements with the .zen-validate-css class for the generated content before the selected element in this shared selector group. */
+
+footer .zen-accessibility::before {
+    /* Begins the rule that targets elements with the .zen-accessibility class for the generated content before the selected element. */
+
+    position: absolute;
+    /* Controls how the element is positioned in the layout; positions the element relative to its nearest positioned ancestor. */
+
+    inset: 0;
+    /* Sets the offsets from all four edges of a positioned element, using 0. */
+
+    width: 94%;
+    /* Sets the element width, using 94%. */
+
+    height: 94%;
+    /* Sets the element height, using 94%. */
+
+    margin: auto;
+    /* Sets the outside spacing around the element; lets the browser calculate the value automatically. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer .zen-validate-html::before {
+    /* Begins the rule that targets elements with the .zen-validate-html class for the generated content before the selected element. */
+
+    background: url("image 1.png") center calc(50% + 4px) / 150% auto no-repeat;
+    /* Sets the background color, gradient, or image; scales the HTML shield to match the CSS shield. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer .zen-validate-css::before {
+    /* Begins the rule that targets elements with the .zen-validate-css class for the generated content before the selected element. */
+
+    background: url("image 2.png") center calc(50% + 4px) / 150% auto no-repeat;
+    /* Sets the background color, gradient, or image; scales the CSS shield to match the HTML shield visually. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer .zen-license::before {
+    /* Begins the rule that targets elements with the .zen-license class for the generated content before the selected element. */
+
+    position: absolute;
+    /* Controls how the element is positioned in the layout; positions the element relative to its nearest positioned ancestor. */
+
+    inset: 0;
+    /* Sets the offsets from all four edges of a positioned element, using 0. */
+
+    width: 72%;
+    /* Sets the element width, using 72%. */
+
+    height: 72%;
+    /* Sets the element height, using 72%. */
+
+    margin: auto;
+    /* Sets the outside spacing around the element; lets the browser calculate the value automatically. */
+
+    border: 0;
+    /* Sets the border’s thickness, style, and color; removes the border. */
+
+    border-radius: 0;
+    /* Rounds the element’s corners; removes this border edge. */
+
+    background: url("creative-commons-logo-png-transparent.png") center / contain no-repeat;
+    /* Sets the background color, gradient, or image; places the image specified by url("creative-commons-logo-png-transparent.png") center / contain no-repeat in the background. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer .zen-accessibility::before {
+    /* Begins the rule that targets elements with the .zen-accessibility class for the generated content before the selected element. */
+
+    background: url("image 4.png") center / 140% auto no-repeat;
+    /* Sets the background color, gradient, or image; places the wheelchair image at center / 140% auto no-repeat. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer .zen-license::before,
+/* Includes elements with the .zen-license class for the generated content before the selected element in this shared selector group. */
+
+footer .zen-accessibility::before {
+    /* Begins the rule that targets elements with the .zen-accessibility class for the generated content before the selected element. */
+
+    filter: brightness(0) invert(1);
+    /* Applies a visual effect to the element, such as changing brightness or colors; turns the image dark and then inverts it to make it appear white. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer .zen-github::before {
+    /* Begins the rule that targets elements with the .zen-github class for the generated content before the selected element. */
+
+    position: absolute;
+    /* Controls how the element is positioned in the layout; positions the element relative to its nearest positioned ancestor. */
+
+    top: 50%;
+    /* Sets the distance from the containing block’s top edge, using 50%. */
+
+    left: 50%;
+    /* Sets the distance from the containing block’s left edge, using 50%. */
+
+    width: 72%;
+    /* Sets the element width, using 72%. */
+
+    height: 72%;
+    /* Sets the element height, using 72%. */
+
+    transform: translate(-50%, calc(-50% - 1px));
+    /* Visually moves, rotates, scales, or otherwise transforms the element, using translate(-50%, calc(-50% - 1px)). */
+
+    background-color: #fff;
+    mask: url("25231.png") center / contain no-repeat;
+    mask-mode: alpha;
+    -webkit-mask: url("25231.png") center / contain no-repeat;
+    -webkit-mask-mode: alpha;
+    /* Uses the Octocat image's transparency to render its silhouette white. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+footer a:hover {
+    /* Begins the rule that targets links and an element while the pointer is over it. */
+
+    transform: translateY(-2px);
+    /* Visually moves, rotates, scales, or otherwise transforms the element; moves the element vertically using translateY(-2px). */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.extra1:empty,
+/* Includes elements with the .extra1 class and an element with no child content in this shared selector group. */
+
+.extra2:empty,
+/* Includes elements with the .extra2 class and an element with no child content in this shared selector group. */
+
+.extra3:empty,
+/* Includes elements with the .extra3 class and an element with no child content in this shared selector group. */
+
+.extra4:empty,
+/* Includes elements with the .extra4 class and an element with no child content in this shared selector group. */
+
+.extra5:empty,
+/* Includes elements with the .extra5 class and an element with no child content in this shared selector group. */
+
+.extra6:empty {
+    /* Begins the rule that targets elements with the .extra6 class and an element with no child content. */
+
+    display: none;
+    /* Chooses the element’s layout behavior; hides the element and removes it from layout. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+::selection {
+    /* Begins the rule that targets text selected by the user so the selection colors can be styled. */
+
+    background: #83eadd;
+    /* Sets the background color, gradient, or image; uses #83eadd as the background color or translucent background fill. */
+
+    color: #241d34;
+    /* Sets the foreground text or icon color, using #241d34. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (max-width: 599px) {
+    /* Begins responsive overrides for viewports no wider than 599px. */
+
+    body#css-zen-garden {
+        /* Begins the rule that targets the page body used by CSS Zen Garden. */
+
+        padding-top: 16px;
+        /* Sets the inside spacing above the content, using 16px. */
+
+        padding-bottom: 16px;
+        /* Sets the inside spacing below the content, using 16px. */
+
+        font-size: 14px;
+        /* Sets the text size; sets the font size to 14px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .page-wrapper {
+        /* Begins the rule that targets the main wrapper that constrains and arranges the page content. */
+
+        --card-gap: 14px;
+        /* Defines the reusable custom property --card-gap as 14px, for later var() references. */
+
+        width: calc(100% - 32px);
+        /* Sets the element width; calculates the value with calc(100% - 32px) so the layout adapts to available space. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .intro>header {
+        /* Begins the rule that targets the header that is a direct child of the introduction section. */
+
+        padding: 18px 16px 10px;
+        /* Sets the inside spacing between the content and its border, using 18px 16px 10px. */
+
+        border-radius: 16px 16px 0 0;
+        /* Rounds the element’s corners, using 16px 16px 0 0. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .intro>header+.summary {
+        /* Begins the rule that targets the summary immediately following the intro header. */
+
+        padding: 0 16px 18px;
+        /* Sets the inside spacing between the content and its border, using 0 16px 18px. */
+
+        border-radius: 0 0 16px 16px;
+        /* Rounds the element’s corners, using 0 0 16px 16px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .intro h1 {
+        /* Begins the rule that targets level-one headings. */
+
+        font-size: clamp(28px, 9vw, 40px);
+        /* Sets the text size; uses clamp(28px, 9vw, 40px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .intro h2 {
+        /* Begins the rule that targets level-two headings. */
+
+        font-size: clamp(20px, 6vw, 26px);
+        /* Sets the text size; uses clamp(20px, 6vw, 26px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .summary p,
+    /* Includes paragraphs inside the summary area in this shared selector group. */
+
+    p {
+        /* Begins the rule that targets paragraph elements. */
+
+        font-size: 13px;
+        /* Sets the text size; sets the font size to 13px. */
+
+        line-height: 1.4;
+        /* Sets the vertical spacing between lines of text, using 1.4. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble,
+    /* Includes the introductory preamble section by its ID in this shared selector group. */
+
+    .explanation,
+    /* Includes the explanation content panel in this shared selector group. */
+
+    .participation,
+    /* Includes the participation content panel in this shared selector group. */
+
+    .benefits,
+    /* Includes the benefits content panel in this shared selector group. */
+
+    .requirements,
+    /* Includes the requirements content panel in this shared selector group. */
+
+    .design-selection,
+    /* Includes the design-selection navigation panel in this shared selector group. */
+
+    .design-archives,
+    /* Includes the design-archives navigation panel in this shared selector group. */
+
+    .zen-resources {
+        /* Begins the rule that targets the Zen resources navigation panel. */
+
+        padding: 16px;
+        /* Sets the inside spacing between the content and its border, using 16px. */
+
+        border-radius: 16px;
+        /* Rounds the element’s corners, using 16px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble,
+    /* Includes the introductory preamble section by its ID in this shared selector group. */
+
+    .explanation,
+    /* Includes the explanation content panel in this shared selector group. */
+
+    .participation,
+    /* Includes the participation content panel in this shared selector group. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        column-gap: 10px;
+        /* Sets the spacing between columns, using 10px. */
+
+        row-gap: 10px;
+        /* Sets the spacing between rows, using 10px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble>p:nth-of-type(n),
+    /* Includes paragraphs and the position n element of its type in this shared selector group. */
+
+    .explanation>p:nth-of-type(n),
+    /* Includes paragraphs and the position n element of its type in this shared selector group. */
+
+    .participation>p:nth-of-type(n),
+    /* Includes paragraphs and the position n element of its type in this shared selector group. */
+
+    .benefits>p,
+    /* Includes paragraphs in this shared selector group. */
+
+    .requirements>p:not([role="contentinfo"]):nth-of-type(n) {
+        /* Begins the rule that targets paragraphs marked with role="contentinfo" and the position n element of its type. */
+
+        flex-basis: 100%;
+        /* Sets a flex item’s starting size before free space is distributed, using 100%. */
+
+        font-size: 13px;
+        /* Sets the text size; sets the font size to 13px. */
+
+        line-height: 1.4;
+        /* Sets the vertical spacing between lines of text, using 1.4. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    h3 {
+        /* Begins the rule that targets level-three headings. */
+
+        margin-bottom: 4px;
+        /* Sets the space below the element, using 4px. */
+
+        font-size: 20px;
+        /* Sets the text size; sets the font size to 20px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        margin-bottom: calc(3lh + 38px);
+        /* Sets the space below the element; calculates the value with calc(3lh + 38px) so the layout adapts to available space. */
+
+        padding-bottom: 16px;
+        /* Sets the inside spacing below the content, using 16px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .requirements>p[role="contentinfo"] {
+        /* Begins the rule that targets paragraphs marked with role="contentinfo". */
+
+        top: calc(100% + 14px);
+        /* Sets the distance from the containing block’s top edge; calculates the value with calc(100% + 14px) so the layout adapts to available space. */
+
+        padding: 12px;
+        /* Sets the inside spacing between the content and its border, using 12px. */
+
+        border-radius: 16px;
+        /* Rounds the element’s corners, using 16px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .sidebar .wrapper {
+        /* Begins the rule that targets the wrapper inside the sidebar. */
+
+        gap: 12px;
+        /* Sets the spacing between rows and/or columns in the layout, using 12px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .design-selection {
+        /* Begins the rule that targets the design-selection navigation panel. */
+
+        padding: 12px 16px;
+        /* Sets the inside spacing between the content and its border, using 12px 16px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .design-name {
+        /* Begins the rule that targets elements with the .design-name class. */
+
+        font-size: 14px;
+        /* Sets the text size; sets the font size to 14px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .designer-name {
+        /* Begins the rule that targets elements with the .designer-name class. */
+
+        font-size: 12px;
+        /* Sets the text size; sets the font size to 12px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .design-archives,
+    /* Includes the design-archives navigation panel in this shared selector group. */
+
+    .zen-resources {
+        /* Begins the rule that targets the Zen resources navigation panel. */
+
+        padding: 12px 16px;
+        /* Sets the inside spacing between the content and its border, using 12px 16px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .design-archives li,
+    /* Includes list items in this shared selector group. */
+
+    .zen-resources li {
+        /* Begins the rule that targets list items. */
+
+        font-size: 12px;
+        /* Sets the text size; sets the font size to 12px. */
+
+        line-height: 1.5;
+        /* Sets the vertical spacing between lines of text, using 1.5. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    footer {
+        /* Begins the rule that targets the page footer. */
+
+        --footer-gap: 10px;
+        /* Defines the reusable custom property --footer-gap as 10px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 600px) {
+    /* Begins responsive overrides for viewports at least 600px wide. */
+
+    body#css-zen-garden {
+        /* Begins the rule that targets the page body used by CSS Zen Garden. */
+
+        padding-top: clamp(24px, 3.1vw, 42px);
+        /* Sets the inside spacing above the content; uses clamp(24px, 3.1vw, 42px) to keep the value responsive within a minimum and maximum. */
+
+        padding-bottom: clamp(24px, 3.1vw, 42px);
+        /* Sets the inside spacing below the content; uses clamp(24px, 3.1vw, 42px) to keep the value responsive within a minimum and maximum. */
+
+        font-size: clamp(16px, 1.6vw, 20px);
+        /* Sets the text size; uses clamp(16px, 1.6vw, 20px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .page-wrapper {
+        /* Begins the rule that targets the main wrapper that constrains and arranges the page content. */
+
+        --card-gap: clamp(16px, 2vw, 24px);
+        /* Defines the reusable custom property --card-gap as clamp(16px, 2vw, 24px), for later var() references. */
+
+        width: 84%;
+        /* Sets the element width, using 84%. */
+
+        max-width: 1120px;
+        /* Caps the element width so it does not grow beyond this limit, using 1120px. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .intro>header {
+        /* Begins the rule that targets the header that is a direct child of the introduction section. */
+
+        padding: clamp(20px, 3vw, 36px) 4% 12px;
+        /* Sets the inside spacing between the content and its border; uses clamp(20px, 3vw, 36px) 4% 12px to keep the value responsive within a minimum and maximum. */
+
+        border-radius: clamp(18px, 2vw, 26px) clamp(18px, 2vw, 26px) 0 0;
+        /* Rounds the element’s corners; uses clamp(18px, 2vw, 26px) clamp(18px, 2vw, 26px) 0 0 to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .intro>header+.summary {
+        /* Begins the rule that targets the summary immediately following the intro header. */
+
+        padding: 0 5% clamp(22px, 3vw, 36px);
+        /* Sets the inside spacing between the content and its border, using 0 5% clamp(22px, 3vw, 36px). */
+
+        border-radius: 0 0 clamp(18px, 2vw, 26px) clamp(18px, 2vw, 26px);
+        /* Rounds the element’s corners, using 0 0 clamp(18px, 2vw, 26px) clamp(18px, 2vw, 26px). */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .intro h1 {
+        /* Begins the rule that targets level-one headings. */
+
+        font-size: clamp(42px, 6.5vw, 76px);
+        /* Sets the text size; uses clamp(42px, 6.5vw, 76px) to keep the value responsive within a minimum and maximum. */
+
+        margin-bottom: clamp(8px, 1.4vw, 16px);
+        /* Sets the space below the element; uses clamp(8px, 1.4vw, 16px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .intro h2 {
+        /* Begins the rule that targets level-two headings. */
+
+        margin-bottom: 8px;
+        /* Sets the space below the element, using 8px. */
+
+        font-size: clamp(28px, 4.5vw, 54px);
+        /* Sets the text size; uses clamp(28px, 4.5vw, 54px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .summary p {
+        /* Begins the rule that targets paragraphs inside the summary area. */
+
+        font-size: clamp(18px, 2.5vw, 30px);
+        /* Sets the text size; uses clamp(18px, 2.5vw, 30px) to keep the value responsive within a minimum and maximum. */
+
+        line-height: 1.35;
+        /* Sets the vertical spacing between lines of text, using 1.35. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble,
+    /* Includes the introductory preamble section by its ID in this shared selector group. */
+
+    .explanation,
+    /* Includes the explanation content panel in this shared selector group. */
+
+    .participation,
+    /* Includes the participation content panel in this shared selector group. */
+
+    .benefits,
+    /* Includes the benefits content panel in this shared selector group. */
+
+    .requirements,
+    /* Includes the requirements content panel in this shared selector group. */
+
+    .design-selection,
+    /* Includes the design-selection navigation panel in this shared selector group. */
+
+    .design-archives,
+    /* Includes the design-archives navigation panel in this shared selector group. */
+
+    .zen-resources {
+        /* Begins the rule that targets the Zen resources navigation panel. */
+
+        padding: clamp(22px, 3vw, 38px);
+        /* Sets the inside spacing between the content and its border; uses clamp(22px, 3vw, 38px) to keep the value responsive within a minimum and maximum. */
+
+        border-radius: clamp(18px, 2vw, 26px);
+        /* Rounds the element’s corners; uses clamp(18px, 2vw, 26px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble {
+        /* Begins the rule that targets the introductory preamble section by its ID. */
+
+        --preamble-column-gap: clamp(18px, 2.5vw, 30px);
+        /* Defines the reusable custom property --preamble-column-gap as clamp(18px, 2.5vw, 30px), for later var() references. */
+
+        column-gap: var(--preamble-column-gap);
+        /* Sets the spacing between columns; uses the shared --preamble-column-gap setting. */
+
+        margin-top: var(--card-gap);
+        /* Sets the space above the element; uses the shared --card-gap setting. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .explanation,
+    /* Includes the explanation content panel in this shared selector group. */
+
+    .participation,
+    /* Includes the participation content panel in this shared selector group. */
+
+    .benefits,
+    /* Includes the benefits content panel in this shared selector group. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        column-gap: clamp(18px, 2.5vw, 30px);
+        /* Sets the spacing between columns; uses clamp(18px, 2.5vw, 30px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        column-gap: clamp(16px, 2vw, 26px);
+        /* Sets the spacing between columns; uses clamp(16px, 2vw, 26px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    p,
+    /* Includes paragraph elements in this shared selector group. */
+
+    #zen-preamble p,
+    /* Includes paragraphs in this shared selector group. */
+
+    .explanation>p,
+    /* Includes paragraphs in this shared selector group. */
+
+    .participation>p,
+    /* Includes paragraphs in this shared selector group. */
+
+    .benefits>p {
+        /* Begins the rule that targets paragraphs. */
+
+        font-size: clamp(16px, 1.75vw, 21px);
+        /* Sets the text size; uses clamp(16px, 1.75vw, 21px) to keep the value responsive within a minimum and maximum. */
+
+        line-height: 1.45;
+        /* Sets the vertical spacing between lines of text, using 1.45. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    h3 {
+        /* Begins the rule that targets level-three headings. */
+
+        margin-bottom: clamp(10px, 1.6vw, 18px);
+        /* Sets the space below the element; uses clamp(10px, 1.6vw, 18px) to keep the value responsive within a minimum and maximum. */
+
+        font-size: clamp(24px, 3vw, 36px);
+        /* Sets the text size; uses clamp(24px, 3vw, 36px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-bottom-adjustment: clamp(40px, 6vw, 60px);
+        /* Defines the reusable custom property --requirements-bottom-adjustment as clamp(40px, 6vw, 60px), for later var() references. */
+
+        --requirements-first-column: 39.393939%;
+        /* Defines the reusable custom property --requirements-first-column as 39.393939%, for later var() references. */
+
+        --requirements-second-column: 60.606061%;
+        /* Defines the reusable custom property --requirements-second-column as 60.606061%, for later var() references. */
+
+        --requirements-first-gap: clamp(7.09091px, 0.984848vw, 11.81818px);
+        /* Defines the reusable custom property --requirements-first-gap as clamp(7.09091px, 0.984848vw, 11.81818px), for later var() references. */
+
+        --requirements-second-gap: clamp(10.90909px, 1.515152vw, 18.18182px);
+        /* Defines the reusable custom property --requirements-second-gap as clamp(10.90909px, 1.515152vw, 18.18182px), for later var() references. */
+
+        width: min(calc(100vw - 26px), 1120px);
+        /* Sets the element width; calculates the value with min(calc(100vw - 26px), 1120px) so the layout adapts to available space. */
+
+        margin-left: calc((100% - min(calc(100vw - 26px), 1120px)) / 2);
+        /* Sets the space to the left of the element; calculates the value with calc((100% - min(calc(100vw - 26px), 1120px)) / 2) so the layout adapts to available space. */
+
+        font-size: clamp(16px, 1.75vw, 21px);
+        /* Sets the text size; uses clamp(16px, 1.75vw, 21px) to keep the value responsive within a minimum and maximum. */
+
+        line-height: 1.45;
+        /* Sets the vertical spacing between lines of text, using 1.45. */
+
+        margin-bottom: calc(2lh + clamp(18px, 2vw, 26px) + clamp(18px, 2vw, 26px) + clamp(16px, 2vw, 24px));
+        /* Sets the space below the element; calculates the value with calc(2lh + clamp(18px, 2vw, 26px) + clamp(18px, 2vw, 26px) + clamp(16px, 2vw, 24px)) so the layout adapts to available space. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .requirements>p:nth-of-type(3),
+    /* Includes paragraphs and the 3rd element of its type in this shared selector group. */
+
+    .requirements>p:nth-of-type(4) {
+        /* Begins the rule that targets paragraphs and the 4th element of its type. */
+
+        margin-top: clamp(18px, 2.5vw, 30px);
+        /* Sets the space above the element; uses clamp(18px, 2.5vw, 30px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .requirements>p[role="contentinfo"] {
+        /* Begins the rule that targets paragraphs marked with role="contentinfo". */
+
+        position: absolute;
+        /* Controls how the element is positioned in the layout; positions the element relative to its nearest positioned ancestor. */
+
+        top: calc(100% + clamp(16px, 2vw, 24px));
+        /* Sets the distance from the containing block’s top edge; calculates the value with calc(100% + clamp(16px, 2vw, 24px)) so the layout adapts to available space. */
+
+        padding: clamp(18px, 2vw, 26px);
+        /* Sets the inside spacing between the content and its border; uses clamp(18px, 2vw, 26px) to keep the value responsive within a minimum and maximum. */
+
+        border-radius: clamp(16px, 1.6vw, 22px);
+        /* Rounds the element’s corners; uses clamp(16px, 1.6vw, 22px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .sidebar .wrapper {
+        /* Begins the rule that targets the wrapper inside the sidebar. */
+
+        gap: clamp(14px, 1.8vw, 22px);
+        /* Sets the spacing between rows and/or columns in the layout; uses clamp(14px, 1.8vw, 22px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .design-selection {
+        /* Begins the rule that targets the design-selection navigation panel. */
+
+        padding-top: clamp(16px, 2vw, 24px);
+        /* Sets the inside spacing above the content; uses clamp(16px, 2vw, 24px) to keep the value responsive within a minimum and maximum. */
+
+        padding-bottom: clamp(16px, 2vw, 24px);
+        /* Sets the inside spacing below the content; uses clamp(16px, 2vw, 24px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .design-name {
+        /* Begins the rule that targets elements with the .design-name class. */
+
+        font-size: clamp(18px, 2vw, 24px);
+        /* Sets the text size; uses clamp(18px, 2vw, 24px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .designer-name {
+        /* Begins the rule that targets elements with the .designer-name class. */
+
+        font-size: clamp(14px, 1.5vw, 18px);
+        /* Sets the text size; uses clamp(14px, 1.5vw, 18px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .design-archives li,
+    /* Includes list items in this shared selector group. */
+
+    .zen-resources li {
+        /* Begins the rule that targets list items. */
+
+        font-size: clamp(14px, 1.4vw, 17px);
+        /* Sets the text size; uses clamp(14px, 1.4vw, 17px) to keep the value responsive within a minimum and maximum. */
+
+        line-height: 1.5;
+        /* Sets the vertical spacing between lines of text, using 1.5. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 600px) and (max-width: 619px) {
+    /* Begins responsive overrides for viewports between 600px and 619px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-bottom-adjustment: 30px;
+        /* Defines the reusable custom property --requirements-bottom-adjustment as 30px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 720px) and (max-width: 759px) {
+    /* Begins responsive overrides for viewports between 720px and 759px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-rounding-adjustment: 0.02px;
+        /* Defines the reusable custom property --requirements-rounding-adjustment as 0.02px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 640px) and (max-width: 659px) {
+    /* Begins responsive overrides for viewports between 640px and 659px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-bottom-adjustment: 50px;
+        /* Defines the reusable custom property --requirements-bottom-adjustment as 50px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 660px) and (max-width: 679px) {
+    /* Begins responsive overrides for viewports between 660px and 679px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-bottom-adjustment: 43px;
+        /* Defines the reusable custom property --requirements-bottom-adjustment as 43px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 700px) and (max-width: 709px) {
+    /* Begins responsive overrides for viewports between 700px and 709px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-bottom-adjustment: 45px;
+        /* Defines the reusable custom property --requirements-bottom-adjustment as 45px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 780px) and (max-width: 799px) {
+    /* Begins responsive overrides for viewports between 780px and 799px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-bottom-adjustment: 55.7px;
+        /* Defines the reusable custom property --requirements-bottom-adjustment as 55.7px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 800px) and (max-width: 819px) {
+    /* Begins responsive overrides for viewports between 800px and 819px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-bottom-adjustment: 50px;
+        /* Defines the reusable custom property --requirements-bottom-adjustment as 50px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 1100px) and (max-width: 1150px) {
+    /* Begins responsive overrides for viewports between 1100px and 1150px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-bottom-adjustment: 62px;
+        /* Defines the reusable custom property --requirements-bottom-adjustment as 62px, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 600px) and (max-width: 619px) {
+    /* Begins responsive overrides for viewports between 600px and 619px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-first-column: 41.176471%;
+        /* Defines the reusable custom property --requirements-first-column as 41.176471%, for later var() references. */
+
+        --requirements-second-column: 58.823529%;
+        /* Defines the reusable custom property --requirements-second-column as 58.823529%, for later var() references. */
+
+        --requirements-first-gap: clamp(7.41176px, 1.029412vw, 12.35294px);
+        /* Defines the reusable custom property --requirements-first-gap as clamp(7.41176px, 1.029412vw, 12.35294px), for later var() references. */
+
+        --requirements-second-gap: clamp(10.58824px, 1.470588vw, 17.64706px);
+        /* Defines the reusable custom property --requirements-second-gap as clamp(10.58824px, 1.470588vw, 17.64706px), for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 600px) and (max-width: 899px) {
+    /* Begins responsive overrides for viewports between 600px and 899px wide. */
+
+    #zen-preamble {
+        /* Begins the rule that targets the introductory preamble section by its ID. */
+
+        --preamble-first: 0.75;
+        /* Defines the reusable custom property --preamble-first as 0.75, for later var() references. */
+
+        --preamble-second: 0.9;
+        /* Defines the reusable custom property --preamble-second as 0.9, for later var() references. */
+
+        --preamble-third: 1.15;
+        /* Defines the reusable custom property --preamble-third as 1.15, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 600px) {
+    /* Begins responsive overrides for viewports at least 600px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.9;
+        /* Defines the reusable custom property --participation-first as 0.9, for later var() references. */
+
+        --participation-second: 0.65;
+        /* Defines the reusable custom property --participation-second as 0.65, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 600px) and (max-width: 619px) {
+    /* Begins responsive overrides for viewports between 600px and 619px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.905;
+        /* Defines the reusable custom property --participation-first as 0.905, for later var() references. */
+
+        --participation-second: 0.619;
+        /* Defines the reusable custom property --participation-second as 0.619, for later var() references. */
+
+        --participation-third: 1.0001;
+        /* Defines the reusable custom property --participation-third as 1.0001, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 660px) and (max-width: 699px) {
+    /* Begins responsive overrides for viewports between 660px and 699px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.895;
+        /* Defines the reusable custom property --participation-first as 0.895, for later var() references. */
+
+        --participation-second: 0.684;
+        /* Defines the reusable custom property --participation-second as 0.684, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 700px) and (max-width: 709px) {
+    /* Begins responsive overrides for viewports between 700px and 709px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.95;
+        /* Defines the reusable custom property --participation-first as 0.95, for later var() references. */
+
+        --participation-second: 0.7;
+        /* Defines the reusable custom property --participation-second as 0.7, for later var() references. */
+
+        --participation-third: 1.05;
+        /* Defines the reusable custom property --participation-third as 1.05, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 720px) and (max-width: 739px) {
+    /* Begins responsive overrides for viewports between 720px and 739px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.95;
+        /* Defines the reusable custom property --participation-first as 0.95, for later var() references. */
+
+        --participation-second: 0.65;
+        /* Defines the reusable custom property --participation-second as 0.65, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 740px) and (max-width: 759px) {
+    /* Begins responsive overrides for viewports between 740px and 759px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.96;
+        /* Defines the reusable custom property --participation-first as 0.96, for later var() references. */
+
+        --participation-second: 0.625;
+        /* Defines the reusable custom property --participation-second as 0.625, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 750px) and (max-width: 779px) {
+    /* Begins responsive overrides for viewports between 750px and 779px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        column-gap: 18px;
+        /* Sets the spacing between columns, using 18px. */
+
+        --participation-first: 0.9499;
+        /* Defines the reusable custom property --participation-first as 0.9499, for later var() references. */
+
+        --participation-second: 0.65;
+        /* Defines the reusable custom property --participation-second as 0.65, for later var() references. */
+
+        --participation-third: 1;
+        /* Defines the reusable custom property --participation-third as 1, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 780px) and (max-width: 799px) {
+    /* Begins responsive overrides for viewports between 780px and 799px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.95;
+        /* Defines the reusable custom property --participation-first as 0.95, for later var() references. */
+
+        --participation-second: 0.65;
+        /* Defines the reusable custom property --participation-second as 0.65, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 820px) and (max-width: 839px) {
+    /* Begins responsive overrides for viewports between 820px and 839px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.85;
+        /* Defines the reusable custom property --participation-first as 0.85, for later var() references. */
+
+        --participation-second: 0.6;
+        /* Defines the reusable custom property --participation-second as 0.6, for later var() references. */
+
+        --participation-third: 0.95;
+        /* Defines the reusable custom property --participation-third as 0.95, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 600px) and (max-width: 699px) {
+    /* Begins responsive overrides for viewports between 600px and 699px wide. */
+
+    .explanation {
+        /* Begins the rule that targets the explanation content panel. */
+
+        --explanation-first: 0.91;
+        /* Defines the reusable custom property --explanation-first as 0.91, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 700px) and (max-width: 899px) {
+    /* Begins responsive overrides for viewports between 700px and 899px wide. */
+
+    .explanation {
+        /* Begins the rule that targets the explanation content panel. */
+
+        --explanation-first: 0.87;
+        /* Defines the reusable custom property --explanation-first as 0.87, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 800px) and (max-width: 849px) {
+    /* Begins responsive overrides for viewports between 800px and 849px wide. */
+
+    .explanation {
+        /* Begins the rule that targets the explanation content panel. */
+
+        --explanation-first: 1;
+        /* Defines the reusable custom property --explanation-first as 1, for later var() references. */
+
+        --explanation-second: 1.12;
+        /* Defines the reusable custom property --explanation-second as 1.12, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 900px) and (max-width: 959px) {
+    /* Begins responsive overrides for viewports between 900px and 959px wide. */
+
+    #zen-preamble h3 {
+        /* Begins the rule that targets level-three headings. */
+
+        flex-basis: calc(67.4vw + var(--preamble-column-gap) + var(--preamble-column-gap));
+        /* Sets a flex item’s starting size before free space is distributed; calculates the value with calc(67.4vw + var(--preamble-column-gap) + var(--preamble-column-gap)) so the layout adapts to available space. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble>p:nth-of-type(1) {
+        /* Begins the rule that targets paragraphs and the 1st element of its type. */
+
+        flex: 0 0 19.7vw;
+        /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 19.7vw. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble>p:nth-of-type(2) {
+        /* Begins the rule that targets paragraphs and the 2nd element of its type. */
+
+        flex: 0 0 20.9vw;
+        /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 20.9vw. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble>p:nth-of-type(3) {
+        /* Begins the rule that targets paragraphs and the 3rd element of its type. */
+
+        flex: 0 0 26.8vw;
+        /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 26.8vw. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    /* Begins responsive overrides for viewports between 900px and 1199px wide. */
+
+    .explanation {
+        /* Begins the rule that targets the explanation content panel. */
+
+        --explanation-first: 0.91;
+        /* Defines the reusable custom property --explanation-first as 0.91, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.9;
+        /* Defines the reusable custom property --participation-first as 0.9, for later var() references. */
+
+        --participation-second: 0.6;
+        /* Defines the reusable custom property --participation-second as 0.6, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 960px) {
+    /* Begins responsive overrides for viewports at least 960px wide. */
+
+    #zen-preamble h3 {
+        /* Begins the rule that targets level-three headings. */
+
+        flex-basis: calc(88.2% + var(--preamble-column-gap) + var(--preamble-column-gap));
+        /* Sets a flex item’s starting size before free space is distributed; calculates the value with calc(88.2% + var(--preamble-column-gap) + var(--preamble-column-gap)) so the layout adapts to available space. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble>p:nth-of-type(1) {
+        /* Begins the rule that targets paragraphs and the 1st element of its type. */
+
+        flex: 0 0 25.2%;
+        /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 25.2%. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble>p:nth-of-type(2) {
+        /* Begins the rule that targets paragraphs and the 2nd element of its type. */
+
+        flex: 0 0 27.3%;
+        /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 27.3%. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+
+
+    #zen-preamble>p:nth-of-type(3) {
+        /* Begins the rule that targets paragraphs and the 3rd element of its type. */
+
+        flex: 0 0 35.7%;
+        /* Sets how a flex item grows, shrinks, and takes up space, using 0 0 35.7%. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 1190px) and (max-width: 1220px) {
+    /* Begins responsive overrides for viewports between 1190px and 1220px wide. */
+
+    .participation {
+        /* Begins the rule that targets the participation content panel. */
+
+        --participation-first: 0.95;
+        /* Defines the reusable custom property --participation-first as 0.95, for later var() references. */
+
+        --participation-second: 0.65;
+        /* Defines the reusable custom property --participation-second as 0.65, for later var() references. */
+
+        --participation-third: 1.05;
+        /* Defines the reusable custom property --participation-third as 1.05, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 1200px) {
+    /* Begins responsive overrides for viewports at least 1200px wide. */
+
+    .explanation {
+        /* Begins the rule that targets the explanation content panel. */
+
+        --explanation-first: 0.95;
+        /* Defines the reusable custom property --explanation-first as 0.95, for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (min-width: 820px) {
+    /* Begins responsive overrides for viewports at least 820px wide. */
+
+    .requirements {
+        /* Begins the rule that targets the requirements content panel. */
+
+        --requirements-first-column: 40.47619%;
+        /* Defines the reusable custom property --requirements-first-column as 40.47619%, for later var() references. */
+
+        --requirements-second-column: 59.52381%;
+        /* Defines the reusable custom property --requirements-second-column as 59.52381%, for later var() references. */
+
+        --requirements-first-gap: clamp(7.28571px, 1.011905vw, 12.14286px);
+        /* Defines the reusable custom property --requirements-first-gap as clamp(7.28571px, 1.011905vw, 12.14286px), for later var() references. */
+
+        --requirements-second-gap: clamp(10.71429px, 1.488095vw, 17.85714px);
+        /* Defines the reusable custom property --requirements-second-gap as clamp(10.71429px, 1.488095vw, 17.85714px), for later var() references. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives {
+    /* Begins the rule that targets the design-archives navigation panel. */
+
+    position: relative;
+    /* Controls how the element is positioned in the layout; keeps the element in normal flow while allowing offset positioning and establishing a positioning reference. */
+
+    isolation: isolate;
+    /* Creates a separate stacking context for layered elements, using isolate. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    align-items: center;
+    /* Aligns items across the flex container’s cross axis, using center. */
+
+    justify-content: center;
+    /* Distributes items along the main axis of the layout, using center. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives h3 {
+    /* Begins the rule that targets level-three headings. */
+
+    display: none;
+    /* Chooses the element’s layout behavior; hides the element and removes it from layout. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives nav {
+    /* Begins the rule that targets navigation regions. */
+
+    position: relative;
+    /* Controls how the element is positioned in the layout; keeps the element in normal flow while allowing offset positioning and establishing a positioning reference. */
+
+    z-index: 1;
+    /* Sets the stacking order relative to overlapping elements, using 1. */
+
+    width: 100%;
+    /* Sets the element width, using 100%. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives ul {
+    /* Begins the rule that targets unordered lists. */
+
+    display: flex;
+    /* Chooses the element’s layout behavior; uses Flexbox to lay out child elements. */
+
+    flex-direction: column;
+    /* Sets the direction in which flex items are arranged; stacks flex items vertically. */
+
+    align-items: center;
+    /* Aligns items across the flex container’s cross axis, using center. */
+
+    gap: clamp(6px, 1.4vw, 14px);
+    /* Sets the spacing between rows and/or columns in the layout; uses clamp(6px, 1.4vw, 14px) to keep the value responsive within a minimum and maximum. */
+
+    padding: 0;
+    /* Sets the inside spacing between the content and its border; removes the corresponding default spacing. */
+
+    list-style: none;
+    /* Sets the marker style used for list items; removes list markers. */
+
+    text-align: center;
+    /* Aligns text horizontally within its container, using center. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives li {
+    /* Begins the rule that targets list items. */
+
+    font-size: clamp(16px, 2.5vw, 29px);
+    /* Sets the text size; uses clamp(16px, 2.5vw, 29px) to keep the value responsive within a minimum and maximum. */
+
+    line-height: 1.3;
+    /* Sets the vertical spacing between lines of text, using 1.3. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives li.viewall {
+    /* Begins the rule that targets list items with the .viewall class. */
+
+    order: 1;
+    /* Changes the visual order of a flex item, using 1. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives li.next {
+    /* Begins the rule that targets list items with the .next class. */
+
+    order: 2;
+    /* Changes the visual order of a flex item, using 2. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives a {
+    /* Begins the rule that targets links. */
+
+    color: var(--ink);
+    /* Sets the foreground text or icon color; uses the shared --ink setting. */
+
+    font-weight: 500;
+    /* Sets how thick or bold the text appears; sets the font weight to 500. */
+
+    text-underline-offset: 3px;
+    /* Sets the distance between text and its underline, using 3px. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives a:visited {
+    /* Begins the rule that targets links and a link the browser marks as visited. */
+
+    color: var(--ink);
+    /* Sets the foreground text or icon color; uses the shared --ink setting. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.design-archives a:hover {
+    /* Begins the rule that targets links and an element while the pointer is over it. */
+
+    color: #28a8ff;
+    /* Sets the foreground text or icon color, using #28a8ff. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+@media (max-width: 599px) {
+    /* Begins responsive overrides for viewports no wider than 599px. */
+
+    .design-archives li {
+        /* Begins the rule that targets list items. */
+
+        font-size: clamp(12px, 3.4vw, 16px);
+        /* Sets the text size; uses clamp(12px, 3.4vw, 16px) to keep the value responsive within a minimum and maximum. */
+
+    }
+
+    /* Closes the current CSS rule or @media block. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
+
+
+
+.requirements>p[role="contentinfo"] {
+    /* Begins the rule that targets paragraphs marked with role="contentinfo". */
+
+    left: calc((100% - min(100cqw, 1120px)) / 2);
+    /* Sets the distance from the containing block’s left edge; calculates the value with calc((100% - min(100cqw, 1120px)) / 2) so the layout adapts to available space. */
+
+    width: min(100cqw, 1120px);
+    /* Sets the element width; calculates the value with min(100cqw, 1120px) so the layout adapts to available space. */
+
+}
+
+/* Closes the current CSS rule or @media block. */
